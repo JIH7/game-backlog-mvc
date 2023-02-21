@@ -2,13 +2,21 @@ const gameDB = require('../models/game')
 
 module.exports = {
     getHome: async (req,res)=>{
+        const gameList = await gameDB.find().setOptions({ collection: 'GameList' })
+        res.render('home.ejs', {items: gameList})
+    },
+
+    addGame: (req,res)=>{
+        console.log(req.body)
         try{
-            const gameList = await gameDB.find().setOptions({ collection: 'GameList' })
-            console.log(`Found ${gameList.length} games.`)
-            res.render('index.ejs', {items: gameList})
-        }catch (error) {
-            console.error(error)
-            res.status(500).send('Internal Server Error')
+            gameDB.create({gameName: req.body.gameName})
+            .then(result =>{
+                console.log(`Game added: ${req.body.gameName}`)
+                res.redirect('/')
+            })
+        }catch(err){
+            console.log(err)
+            res.redirect('/')
         }
-    }   
+    },
 }
