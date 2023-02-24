@@ -9,3 +9,20 @@ form{
     flex-direction: column;
     margin-top: 100px;
 }
+
+form > div{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.submit{
+    width: 50%;
+    align-self: center;
+    margin-top: 15px;
+}
+
+.errorText{
+    margin-top: 5px;
+    color: red;
+}
