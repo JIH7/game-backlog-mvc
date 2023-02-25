@@ -66,8 +66,9 @@ const User = require('../models/user')
       req.flash('errors', validationErrors)
       return res.redirect('../signup')
     }
+    console.log(`Email before ${req.body.email}`)
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-  
+    console.log(`Email after ${req.body.email}`)
     const user = new User({
       userName: req.body.userName,
       email: req.body.email,
