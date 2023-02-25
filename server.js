@@ -7,7 +7,6 @@ const flash = require('express-flash')
 const MongoStore = require('connect-mongo')(session)
 const connectDB = require('./config/database')
 const indexRoutes = require('./routers/index')
-const authRoutes = require('./routers/auth')
 const homeRoutes = require('./routers/home')
 const gamePageRoutes = require('./routers/gamePage')
 
@@ -39,7 +38,6 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', indexRoutes)
-app.use('/auth')
 app.use('/home', homeRoutes)
 app.use('/game', gamePageRoutes)
 

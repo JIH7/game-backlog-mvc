@@ -14,6 +14,15 @@ a{
     padding: 6px;
     border-radius: 10px;
     text-decoration: none;
+
+    transition: all .25s;
+}
+
+a:hover{
+    background-color: white;
+    color: rgb(47, 51, 55);
+
+    border: 3px solid rgb(246, 246, 246);
 }
 
 .holder a{

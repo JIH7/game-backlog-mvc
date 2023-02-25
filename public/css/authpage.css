@@ -16,6 +16,14 @@ form > div{
     margin-top: 5px;
 }
 
+.otherpages{
+    justify-content: center;
+}
+
+.otherpages > a{
+    margin: 15px;
+}
+
 .submit{
     width: 50%;
     align-self: center;

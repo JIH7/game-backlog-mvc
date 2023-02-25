@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+
+.mainSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 95vh;
+
+    padding-bottom: 20%;
+}
