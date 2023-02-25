@@ -31,7 +31,7 @@ const User = require('../models/user')
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/todos')
+        res.redirect(req.session.returnTo || '/home')
       })
     })(req, res, next)
   }
@@ -89,7 +89,7 @@ const User = require('../models/user')
           if (err) {
             return next(err)
           }
-          res.redirect('/todos')
+          res.redirect('/home')
         })
       })
     })

@@ -15,10 +15,21 @@
     <title>Game Backlog: Login</title>
 </head>
 <body>
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <% if (locals.messages.info) { %>
+        <% messages.info.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+
     <form action="/login" method="post">
         <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email">
         </div>
         <div>
             <label for="password">Password:</label>
