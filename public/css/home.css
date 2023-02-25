@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav{
+    align-items: center;
+    align-self: flex-end;
+}
+
+a{
+    height: 16px;
+    margin-left: 20px;
+}
+
+select{
+    background-color: rgb(47, 51, 55);
+    color: white;
+    transition: all .25s;
+    margin-bottom: 25px;
+    height: 30px;
+}
+
+select:hover{
+    background-color: white;
+    color: rgb(47, 51, 55);
+
+    cursor: pointer;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

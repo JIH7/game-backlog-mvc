@@ -18,6 +18,7 @@ form > div{
 
 .otherpages{
     justify-content: center;
+    margin-top: 16px;
 }
 
 .otherpages > a{
@@ -33,4 +34,8 @@ form > div{
 .errorText{
     margin-top: 5px;
     color: red;
+}
+
+label{
+    margin-right: 5px;
 }

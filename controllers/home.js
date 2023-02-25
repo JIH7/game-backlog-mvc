@@ -3,7 +3,7 @@ const gameDB = require('../models/game')
 module.exports = {
     getHome: async (req,res)=>{
         const gameList = await gameDB.find({userId: req.user.id})
-        res.render('home.ejs', {items: gameList})
+        res.render('home.ejs', {items: gameList, user: req.user})
     },
 
     addGame: async (req,res)=>{
