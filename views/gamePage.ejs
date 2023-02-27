@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/gamePageStyle.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
     <title>You should play <%= gameData.name %></title>
 </head>
 <body>
-    <div class="holder flexContainer">
+    <div class="flexContainer column">
         <h2>You should play...</h2>
         <h1><%= gameData.name %></h1>
         <img src="<%= gameData.imageUrl %> " alt="">
@@ -28,7 +28,7 @@
         <% }} %></h3> 
 
 
-        <a href="/home"><button>Back to the list!</button></a>
+        <a href="/home" class="centerButton">Back to the list!</a>
     </div>
 
     <div class="credits"><span>App by <a href="jeremyhelsel.com">Jeremy Helsel</a></span></div>

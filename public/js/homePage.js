@@ -9,21 +9,41 @@ async function viewGame(){
     console.log(gameSelect.value)
 
     if(gameSelect.value !== 'placeHolder'){
-        await fetch('game',{
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                'gameId': gameSelect.value
+        try{
+            const response = await fetch(`game/?game=${gameSelect.value}`,{
+                method: 'get',
+                headers: {'Content-Type': 'application/json'},
             })
-        })
+
+            if (response.ok) {
+                const data = await response.text()
+                const container = document.querySelector('HTML')
+                container.innerHTML = data
+            }
+        }catch(err){
+            console.log(err)
+        }
     }
 }
 
-function deleteGame(){
+async function deleteGame(){
     console.log('delete game')
     console.log(gameSelect.value)
 
     if(gameSelect.value !== 'placeHolder'){
-        
+        try{
+            const response = await fetch('home/deleteGame',{
+                method: 'delete',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    'gameFromJS': gameSelect.value
+                })
+            })
+            const data = await response.json()
+            console.log(data)
+            location.reload()
+        }catch(err){
+            console.log(err)
+        }
     }
 }

@@ -8,5 +8,6 @@ router.get('/', ensureAuth , homeController.getHome)
 router.post('/searchGame', homeController.searchGame)
 
 router.post('/addGame', homeController.addGame)
+router.delete('/deleteGame', homeController.deleteGame)
 
 module.exports = router

@@ -23,4 +23,12 @@ module.exports = {
             res.redirect('/home')
         }
     },
+
+    deleteGame: async (req,res)=>{
+        gameDB.deleteOne({gameName: req.body.gameFromJS, userId: req.user.id})
+        .then(result =>{
+            res.json('Game Deleted')
+        })
+        .catch(err => console.log(err))
+    },
 }
