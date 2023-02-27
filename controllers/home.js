@@ -12,6 +12,10 @@ module.exports = {
         res.render('searchPage.ejs', {items: searchResults})
     },
 
+    getSearchPage: async(req,res)=>{
+        res.render('searchPage.ejs', {items: []})
+    },
+
     addGame: async (req,res)=>{
         console.log(req.body)
         try{

@@ -1,0 +1,26 @@
+main{
+    align-items: center;
+}
+
+main > div{
+    width: 600px;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+.gameTile{
+    align-items: center;
+    justify-content: space-between;
+}
+
+main img{
+    height: 80px;
+}
+
+@media screen and (max-width: 600px){
+
+    main > div{
+        min-width: 0px;
+        width: 95%;
+    }
+}
