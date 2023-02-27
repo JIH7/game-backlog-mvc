@@ -4,14 +4,15 @@ body{
     align-items: center;
 }
 
-nav{
-    align-items: center;
-    align-self: flex-end;
-}
-
 a{
     height: 16px;
     margin-left: 20px;
+}
+
+p{
+    margin-top: 30px;
+    font-size: 20px;
+    align-self: center;
 }
 
 select{
@@ -37,5 +38,10 @@ main{
 }
 
 .gameList > *{
-    margin: 24px 4px;
+    margin: 8px 4px;
+}
+
+.randomButton{
+    font-size: 24px;
+    height: 28px;
 }

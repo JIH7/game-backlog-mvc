@@ -9,7 +9,7 @@ module.exports = {
 
     searchGame: async (req,res)=>{
         const searchResults = await hltbController.searchGame(req.body.gameName)
-        res.render('searchPage.ejs', {items: searchResults})
+        res.render('searchPage.ejs', {items: searchResults, user: req.user})
     },
 
     getSearchPage: async(req,res)=>{
@@ -19,7 +19,7 @@ module.exports = {
     addGame: async (req,res)=>{
         console.log(req.body)
         try{
-            await gameDB.create({gameName: req.body.gameName, userId: req.user.id})
+            await gameDB.create({gameName: req.body.gameName, gameId: req.body.gameId, userId: req.user.id})
             console.log(`Game added: ${req.body.gameName}`)
             res.redirect('/home')
         }catch(err){

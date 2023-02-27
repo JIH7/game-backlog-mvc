@@ -5,6 +5,12 @@ const GameSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    gameId: {
+        type: String,
+        required: true
+    },
+
     userId: {
         type: String,
         required: true

@@ -23,8 +23,22 @@
 
     <main>
         <h1>What game should I play?</h1>
-            
+        
+        <% if(items.length > 0){ %>
+            <a href="" class="randomButton">Random Game!</a>
+        <% } %>
+
+        <section class="flexContainer column">
+            <p>Add a game:</p>
+            <form action="/home/searchGame" method="POST">
+                <input type="text" placeholder="New Game" name = "gameName" class="textInput">
+                <input type="submit" value="Search Game">
+            </form>
+        </section>
+
         <% if(items.length > 0) { %>
+        <p>Or manage your list:</p>
+        
         <section class="gameList">
             <select name="gameList" id="">
                 <option value="placeHolder">Select a game to view</option>
@@ -35,14 +49,11 @@
             <button id="viewGame">View Game</button>
             <button id="deleteGame">Delete Game</button>
         </section>
+        <% }else{ %>
+            <h2>Search a game to build out your list!</h2>
         <% } %>
 
-        <section>
-            <form action="/home/searchGame" method="POST">
-                <input type="text" placeholder="New Game" name = "gameName" class="textInput">
-                <input type="submit" value="Search Game">
-            </form>
-        </section>
+        
     </main>
 
     <script src="js/homePage.js"></script>

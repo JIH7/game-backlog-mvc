@@ -98,5 +98,12 @@ input[type=text]:hover, input[type=email]:hover, input[type=password]:hover{
 }
 
 .logOutPrompt{
-    align-self: flex-end    ;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+.logOutPrompt a{
+    height: 16px;
+    margin-left: 20px;
 }

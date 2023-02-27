@@ -17,14 +17,24 @@
 </head>
 <body>
     <body>
+        <nav class="flexContainer logOutPrompt">
+            <p>Logged in as <%= user.userName %></p>
+            <a href="/logout">Log out</a>
+        </nav>
+
         <main class="flexContainer column">
             <% for(let i = 0; i < items.length; i++){ %>
-                <div class="gameTile flexContainer">
+                <div class="gameTile flexContainer" data-gameName="<%= items[i].name %>" data-gameId="<%= items[i].id %>">
                     <img src="<%= items[i].imageUrl %>" alt="<%= items[i].name %> image">
                     <span><%= items[i].name %></span>
-                    <button>Add Game</button>
+                    <form action="/home/addGame" method="POST">
+                        <input type="text" name="gameName" value="<%= items[i].name %>">
+                        <input type="text" name="gameId" value="<%= items[i].id %>">
+                        <input type="submit" value="Add Game">
+                    </form>
                 </div>
             <% } %>
+            <script src="/js/searchPage.js"></script>
         </main>
     </body>
 </body>
