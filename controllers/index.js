@@ -2,6 +2,6 @@ const user = require('../models/user')
 
 module.exports = {
     getIndex: (req,res)=>{
-        res.render('index.ejs')
+        res.render('index.ejs', {user: req.user})
     },
 }

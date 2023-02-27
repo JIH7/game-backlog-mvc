@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+h1{
+    font-size: 60px;
+}
+
+.mainSection a{
+    font-size: 30px;
+}
+
 .mainSection{
     display: flex;
     flex-direction: column;
@@ -16,4 +24,14 @@
 
 a{
     margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    h1{
+        font-size: 30px;
+    }
+
+    a{
+        font-size: 20px;
+    }
 }

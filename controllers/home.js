@@ -1,9 +1,15 @@
 const gameDB = require('../models/game')
+const hltbController = require('../controllers/hltb')
 
 module.exports = {
     getHome: async (req,res)=>{
         const gameList = await gameDB.find({userId: req.user.id})
         res.render('home.ejs', {items: gameList, user: req.user})
+    },
+
+    searchGame: async (req,res)=>{
+        const searchResults = await hltbController.searchGame(req.body.gameName)
+        res.render('searchPage.ejs', {items: searchResults})
     },
 
     addGame: async (req,res)=>{

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -15,7 +16,7 @@
     <title>What game should I play?</title>
 </head>
 <body>
-    <nav class="flexContainer">
+    <nav class="flexContainer logOutPrompt">
         <p>Logged in as <%= user.userName %></p>
         <a href="/logout">Log out</a>
     </nav>
@@ -23,26 +24,27 @@
     <main>
         <h1>What game should I play?</h1>
             
-        <% if(items !== null) { %>
-        <section>
+        <% if(items.length > 0) { %>
+        <section class="gameList">
             <select name="gameList" id="">
-                <option value="placeHolder">Select a game to view.</option>
+                <option value="placeHolder">Select a game to view</option>
                 <% for(let i = 0; i < items.length; i++) {%>
                     <option value="<%= items[i]._id %>"><%= items[i].gameName %></option>
-                <% } %>
-                <button>View Game</button>
-                <button>Delete Game</button>
+                <% } %>    
             </select>
+            <button id="viewGame">View Game</button>
+            <button id="deleteGame">Delete Game</button>
         </section>
         <% } %>
 
         <section>
-            <form action="/home/addGame" method="POST">
+            <form action="/home/searchGame" method="POST">
                 <input type="text" placeholder="New Game" name = "gameName" class="textInput">
-                <input type="submit">
+                <input type="submit" value="Search Game">
             </form>
         </section>
     </main>
 
+    <script src="js/homePage.js"></script>
 </body>
 </html>

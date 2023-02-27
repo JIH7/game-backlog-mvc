@@ -15,11 +15,23 @@
     <title>What game should I play?</title>
 </head>
 <body>
+    <% if(user){ %>
+        <div class="flexContainer column">
+            <nav class="flexContainer logOutPrompt">
+                <p>Logged in as <%= user.userName %></p>
+                <a href="/logout">Log out</a>
+            </nav>
+        </div>
+    <% } %>
     <section class="flexContainer mainSection">
         <h1>Game Backlog Tracker</h1>
         <div class="flexContainer">
-            <a href="/login"><span>Login</span></a>
-            <a href="/signup"><span>Signup</span></a>
+            <% if(!user){ %>
+                <a href="/login"><span>Login</span></a>
+                <a href="/signup"><span>Signup</span></a>
+            <% }else{ %>
+                <a href="/home">Take me to my list!</a>
+            <% } %>
         </div>
     </section>
 </body>
