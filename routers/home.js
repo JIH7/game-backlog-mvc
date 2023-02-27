@@ -6,7 +6,6 @@ const { ensureAuth } = require('../middleware/auth')
 router.get('/', ensureAuth , homeController.getHome)
 
 router.post('/searchGame', homeController.searchGame)
-router.get('/searchGame', homeController.getSearchPage)
 
 router.post('/addGame', homeController.addGame)
 

@@ -31,7 +31,7 @@ form > div{
     margin-top: 15px;
 }
 
-.errorText{
+.errorText, .alert-danger{
     margin-top: 5px;
     color: red;
 }

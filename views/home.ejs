@@ -43,7 +43,7 @@
             <select name="gameList" id="">
                 <option value="placeHolder">Select a game to view</option>
                 <% for(let i = 0; i < items.length; i++) {%>
-                    <option value="<%= items[i]._id %>"><%= items[i].gameName %></option>
+                    <option value="<%= items[i].gameName %>"><%= items[i].gameName %></option>
                 <% } %>    
             </select>
             <button id="viewGame">View Game</button>

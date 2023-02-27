@@ -18,28 +18,17 @@
     <div class="holder flexContainer">
         <h2>You should play...</h2>
         <h1><%= gameData.name %></h1>
-        <img src="<%= gameData.background_image %> " alt="">
-
-        <% if (gameData.metacritic !== null) { %>
-            <h2>Metacritic: <%= gameData.metacritic %></h2>
-        <% } %>
+        <img src="<%= gameData.imageUrl %> " alt="">
 
         <h3>Platforms: <% for(let i = 0; i < gameData.platforms.length; i++) { %>
             <% if(i < gameData.platforms.length - 1) {%>
-                <span><%= gameData.platforms[i].platform.name %>, </span>
+                <span><%= gameData.platforms[i].platform %>, </span>
             <% }else{ %>
-                <span><%= gameData.platforms[i].platform.name %></span>
+                <span><%= gameData.platforms[i].platform %></span>
         <% }} %></h3> 
 
-        <% if(gameData.genres.length > 0) { %> 
-        <h3>Genres: <% for(let i = 0; i < gameData.genres.length; i++) { %>
-            <% if(i < gameData.genres.length - 1) {%>
-                <span><%= gameData.genres[i].name %>, </span>
-            <% }else{ %>
-                <span><%= gameData.genres[i].name %></span>
-        <% }}} %></h3>
 
-        <a href="/"><button>Back to the list!</button></a>
+        <a href="/home"><button>Back to the list!</button></a>
     </div>
 
     <div class="credits"><span>App by <a href="jeremyhelsel.com">Jeremy Helsel</a></span></div>
