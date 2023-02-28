@@ -15,7 +15,16 @@ module.exports = {
     addGame: async (req,res)=>{
         console.log(req.body)
         try{
-            await gameDB.create({gameName: req.body.gameName, gameId: req.body.gameId, userId: req.user.id})
+            const newGameArray = await hltbController.searchGame(req.body.gameName)
+            const newGame = newGameArray[0]
+            await gameDB.create({
+                gameName: newGame.name,
+                gameId: newGame.id,
+                ttbMain: newGame.gameplayMain,
+                ttbMainExtra: newGame.gameplayMainExtra,
+                ttbCompletionist: newGame.gameplayCompletionist,
+                userId: req.user.id
+            })
             console.log(`Game added: ${req.body.gameName}`)
             res.redirect('/home')
         }catch(err){

@@ -8,7 +8,18 @@ const GameSchema = new mongoose.Schema({
 
     gameId: {
         type: String,
-        required: true
+    },
+
+    ttbMain:{
+        type: Number
+    },
+
+    ttbMainExtra:{
+        type: Number
+    },
+
+    ttbCompletionist:{
+        type: Number
     },
 
     userId: {

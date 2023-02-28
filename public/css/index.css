@@ -26,6 +26,15 @@ a{
     margin: 10px;
 }
 
+p{
+    font-size: 20px;
+    text-align: center;
+}
+
+p .credits a{
+    font-size: 20px;
+}
+
 @media only screen and (max-width: 600px) {
     h1{
         font-size: 30px;

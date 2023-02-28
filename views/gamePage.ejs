@@ -15,21 +15,36 @@
     <title>You should play <%= gameData.name %></title>
 </head>
 <body>
-    <div class="flexContainer column">
+    <nav class="flexContainer logOutPrompt">
+        <p>Logged in as <%= user.userName %></p>
+        <a href="/logout">Log out</a>
+    </nav>
+
+    <main class="flexContainer column gamePage">
         <h2>You should play...</h2>
         <h1><%= gameData.name %></h1>
         <img src="<%= gameData.imageUrl %> " alt="">
 
-        <h3>Platforms: <% for(let i = 0; i < gameData.platforms.length; i++) { %>
-            <% if(i < gameData.platforms.length - 1) {%>
-                <span><%= gameData.platforms[i].platform %>, </span>
-            <% }else{ %>
-                <span><%= gameData.platforms[i].platform %></span>
-        <% }} %></h3> 
+        <section>
+            <h3>Beating this game takes</h3>
+            <h4>Main: <%= gameData.gameplayMain %> hours</h4>
+            <h4>Main + Extras: <%= gameData.gameplayMainExtra %> hours</h4>
+            <h4>Completionist: <%= gameData.gameplayCompletionist %> hours</h4>
+
+            <h3>Platforms: <% for(let i = 0; i < gameData.platforms.length; i++) { %>
+                <% if(i < gameData.platforms.length - 1) {%>
+                    <span><%= gameData.platforms[i] %>, </span>
+                <% }else{ %>
+                    <span><%= gameData.platforms[i] %></span>
+            <% }} %></h3> 
+
+        </section>
+
+        
 
 
         <a href="/home" class="centerButton">Back to the list!</a>
-    </div>
+    </main>
 
     <div class="credits"><span>App by <a href="jeremyhelsel.com">Jeremy Helsel</a></span></div>
 </body>

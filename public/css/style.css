@@ -107,3 +107,18 @@ input[type=text]:hover, input[type=email]:hover, input[type=password]:hover{
     height: 16px;
     margin-left: 20px;
 }
+
+.logOutPrompt p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+
+.credits a{
+    border: none;
+    margin: 0px;
+}
+
+.credits a:hover{
+    color: rgb(47, 51, 55);
+}

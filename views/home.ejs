@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +48,39 @@
             </select>
             <button id="viewGame">View Game</button>
             <button id="deleteGame">Delete Game</button>
+        </section>
+        <section>
+            <h4>Your entire game backlog would take:</h4>
+            <% 
+            let totalMain = 0, totalMainExtra = 0, totalCompletionist = 0;
+
+            for(let i = 0; i < items.length; i++){
+                totalMain += items[i].ttbMain
+                totalMainExtra += items[i].ttbMainExtra
+                totalCompletionist += items[i].ttbCompletionist
+            }
+
+            function daysFormat(time){
+                if(time <= 24){
+                    return `${time} hours`
+                }
+
+                const remainder = time % 24
+                let timeForDays = time - remainder
+                timeForDays /= 24
+
+                if(remainder !== 0){
+                    return `${timeForDays} days and ${remainder} hours`
+                }
+                else{
+                    return `${timeForDays} days`
+                }
+            }
+
+             %>
+            <p>Rushing through the main game: <%= daysFormat(totalMain) %></p>
+            <p>Taking some time to do side content: <%= daysFormat(totalMainExtra) %></p>
+            <p>Doing every single side activity: <%= daysFormat(totalCompletionist) %></p>
         </section>
         <% }else{ %>
             <h2>Search a game to build out your list!</h2>

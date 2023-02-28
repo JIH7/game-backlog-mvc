@@ -48,5 +48,20 @@ main{
 
 .centerButton{
     align-self: center;
-    width: 100px;
+}
+
+img{
+    max-width: 90%;
+    align-self: center;
+}
+
+.gamePage{
+    align-items: center;
+}
+
+@media screen and (max-width: 500px){
+
+    button{
+        font-size: 10px;
+    }
 }

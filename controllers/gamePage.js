@@ -7,7 +7,7 @@ module.exports = {
         const gameDataArray = await hltbController.searchGame(req.query.game)
         const gameDataHolder = gameDataArray[0]
         console.log(gameDataHolder)
-        res.render('gamePage.ejs', {gameData: gameDataHolder})
+        res.render('gamePage.ejs', {gameData: gameDataHolder, user: req.user})
     },
 
     getRandomGamePage: async (req,res)=>{
@@ -20,6 +20,6 @@ module.exports = {
         const gameDataArray = await hltbController.searchGame(randomGame.gameName)
         const gameDataHolder = gameDataArray[0]
         console.log(gameDataHolder)
-        res.render('gamePage.ejs', {gameData: gameDataHolder})
+        res.render('gamePage.ejs', {gameData: gameDataHolder, user: req.user})
     },
 }
