@@ -85,7 +85,33 @@
              %>
             <p><%= daysFormat(totalMain) %> if you were to rush through the main game, </p>
             <p><%= daysFormat(totalMainExtra) %> if you took your time to do some side content, </p>
-            <p>and <%= daysFormat(totalCompletionist) %> if you did every single side activity!</p>
+            <p>and<% if(totalCompletionist >= 336){ %> a whopping<% } %> <%= daysFormat(totalCompletionist) %> if you did every single side activity!</p>
+            
+            <% if(totalCompletionist >= 122640){ %>
+                <p>That's Longer than Duke Nukem Forever spent in development!!!</p>
+            <% }else if(totalCompletionist >= 52560){ %>
+                <p>That's longer than it took to build the Burj Khalifa!</p>
+            <% }else if(totalCompletionist >= 9840){ %>
+                <p>That's longer than it took to build the empire state building!</p>
+            <% }else if(totalCompletionist >= 8760){ %>
+                <p>That's an entire year!</p>
+            <% }else if(totalCompletionist >= 6481){ %>
+                <p>That's longer than an entire human pregnancy!</p>
+            <% }else if(totalCompletionist >= 4368){ %>
+                <p>That's over half a year!</p>
+            <% }else if(totalCompletionist >= 2256){ %>
+                <p>That's longer than an entire winter!</p>
+            <% }else if(totalCompletionist >= 1680){ %>
+                <p>That's longer than the first voyage to the new world!</p>
+            <% }else if(totalCompletionist >= 1440){ %>
+                <p>That's longer than the lifespan of a housefly!</p>
+            <% }else if(totalCompletionist >= 720){ %>
+                <p>That's over a month of straight gameplay!</p>
+            <% }else if(totalCompletionist >= 336){ %>
+                <p>That's over two weeks!</p>
+            <% }else{ %>
+                <p>Better get started!</p>
+            <% } %>
         </section>
         <% }else{ %>
             <h2>Search a game to build out your list!</h2>
