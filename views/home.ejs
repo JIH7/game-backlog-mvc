@@ -121,7 +121,7 @@
                 <p>Better get started!</p>
             <% } %>
             <% if(totalMainExtraCompleted > 0){ %>
-                <p>You've completed roughly <%= daysFormat(totalMainExtraCompleted) %></p>
+                <p>You've completed roughly <%= daysFormat(totalMainExtraCompleted) %> of game!<% if(totalMainExtraCompleted > 336) { %> Wow!<% } %></p>
             <% } %>
         </section>
         <% }else{ %>
