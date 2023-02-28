@@ -26,6 +26,11 @@ const GameSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    completed: {
+        type: Boolean,
+        required: true
+    },
 })
 
 module.exports = mongoose.model('Game', GameSchema)

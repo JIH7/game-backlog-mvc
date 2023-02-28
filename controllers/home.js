@@ -23,7 +23,8 @@ module.exports = {
                 ttbMain: newGame.gameplayMain,
                 ttbMainExtra: newGame.gameplayMainExtra,
                 ttbCompletionist: newGame.gameplayCompletionist,
-                userId: req.user.id
+                userId: req.user.id,
+                completed: false,
             })
             console.log(`Game added: ${req.body.gameName}`)
             res.redirect('/home')
