@@ -95,7 +95,7 @@ select{
 @media screen and (max-width: 600px){
 
     button{
-        font-size: 10px;
+        font-size: 12px;
     }
     
     select{
@@ -118,6 +118,10 @@ select{
 @media screen and (min-width: 601px) {
     .homeMain{
         justify-content: center;
+    }
+
+    .homeMain > section:has(+ section) p:has(+ form){
+        margin-top: 70px;
     }
 
     .homeMain > section:has(+ section), .homeMain > section + section{

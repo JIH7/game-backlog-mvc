@@ -56,7 +56,7 @@
         </section>
         <section>
             <h2>Some fun facts...</h2>
-            <p>Your entire game backlog would take</p>
+            
             <% 
             let totalMain = 0, totalMainExtra = 0, totalCompletionist = 0
             let totalMainExtraCompleted = 0
@@ -90,6 +90,7 @@
             }
 
              %>
+            <p>Your entire <% if(totalMainExtraCompleted > 0){ %>remaining <% } %>game backlog would take</p>
             <p><%= daysFormat(totalMain) %> if you were to rush through the main game, </p>
             <p><%= daysFormat(totalMainExtra) %> if you took your time to do some side content, </p>
             <p>and<% if(totalCompletionist >= 336){ %> a whopping<% } %> <%= daysFormat(totalCompletionist) %> if you did every single side activity!</p>
