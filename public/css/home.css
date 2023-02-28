@@ -72,9 +72,7 @@ img{
     margin-top: 30px;
 }
 
-.homeMain > section:has(+ section), .homeMain > section + section{
-    height: 325px;
-}
+
 
 .homeMain > section + section > p, .homeMain section + section > h2{
     margin-left: 10px;
@@ -92,6 +90,10 @@ img{
 
     .homeMain{flex-direction: column;}
 
+    .homeMain > section{
+        width: 95%;
+    }
+
     .randomButton{
         font-size: 24px;
         height: 28px;
@@ -103,4 +105,7 @@ img{
         justify-content: center;
     }
 
+    .homeMain > section:has(+ section), .homeMain > section + section{
+        height: 325px;
+    }
 }
