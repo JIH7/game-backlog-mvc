@@ -21,36 +21,41 @@
         <a href="/logout">Log out</a>
     </nav>
 
-    <main>
-        <h1>What game should I play?</h1>
-        
-        <% if(items.length > 0){ %>
-            <a href="game/random" class="randomButton">Random Game!</a>
-        <% } %>
+    <h1>What game should I play?</h1>
 
+    <% if(items.length > 0){ %>
+        <a href="game/random" class="randomButton">Give Me a Random Game!</a>
+    <% } %>
+
+    <main class="homeMain">
         <section class="flexContainer column">
-            <p>Add a game:</p>
-            <form action="/home/searchGame" method="POST">
-                <input type="text" placeholder="New Game" name = "gameName" class="textInput">
-                <input type="submit" value="Search Game">
-            </form>
-        </section>
+            <section class="flexContainer column">
+                <p>Add a game:</p>
+                <form action="/home/searchGame" method="POST">
+                    <div>
+                        <input type="text" placeholder="New Game" name = "gameName" class="textInput">
+                        <input type="submit" value="Search Game">
+                    </div>
+                </form>
+            </section>
 
-        <% if(items.length > 0) { %>
-        <p>Or manage your list:</p>
-        
-        <section class="gameList">
-            <select name="gameList" id="">
-                <option value="placeHolder">Select a game to view</option>
-                <% for(let i = 0; i < items.length; i++) {%>
-                    <option value="<%= items[i].gameName %>"><%= items[i].gameName %></option>
-                <% } %>    
-            </select>
-            <button id="viewGame">View Game</button>
-            <button id="deleteGame">Delete Game</button>
+            <% if(items.length > 0) { %>
+            <p>Or manage your list:</p>
+            
+            <section class="gameList">
+                <select name="gameList" id="">
+                    <option value="placeHolder">Select a game to view</option>
+                    <% for(let i = 0; i < items.length; i++) {%>
+                        <option value="<%= items[i].gameName %>"><%= items[i].gameName %></option>
+                    <% } %>    
+                </select>
+                <button id="viewGame">View Game</button>
+                <button id="deleteGame">Delete Game</button>
+            </section>
         </section>
         <section>
-            <h4>Your entire game backlog would take:</h4>
+            <h2>Some fun facts...</h2>
+            <p>Your entire game backlog would take</p>
             <% 
             let totalMain = 0, totalMainExtra = 0, totalCompletionist = 0;
 
@@ -78,9 +83,9 @@
             }
 
              %>
-            <p>Rushing through the main game: <%= daysFormat(totalMain) %></p>
-            <p>Taking some time to do side content: <%= daysFormat(totalMainExtra) %></p>
-            <p>Doing every single side activity: <%= daysFormat(totalCompletionist) %></p>
+            <p><%= daysFormat(totalMain) %> if you were to rush through the main game, </p>
+            <p><%= daysFormat(totalMainExtra) %> if you took your time to do some side content, </p>
+            <p>and <%= daysFormat(totalCompletionist) %> if you did every single side activity!</p>
         </section>
         <% }else{ %>
             <h2>Search a game to build out your list!</h2>

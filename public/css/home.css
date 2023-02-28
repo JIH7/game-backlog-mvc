@@ -42,8 +42,8 @@ main{
 }
 
 .randomButton{
-    font-size: 24px;
-    height: 28px;
+    font-size: 36px;
+    height: 40px;
 }
 
 .centerButton{
@@ -59,9 +59,45 @@ img{
     align-items: center;
 }
 
-@media screen and (max-width: 500px){
+.homeMain{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.homeMain > section{
+    background-color: rgb(70, 79, 88);
+    border-radius: 15px;
+    margin: 5px;
+    margin-top: 30px;
+    height: 325px;
+}
+
+.homeMain > section + section > p, .homeMain section + section > h2{
+    margin-left: 10px;
+}
+
+.homeMain .flexContainer{
+    align-items: center;
+}
+
+@media screen and (max-width: 600px){
 
     button{
         font-size: 10px;
     }
+
+    .homeMain{flex-direction: column;}
+
+    .randomButton{
+        font-size: 24px;
+        height: 28px;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .homeMain{
+        justify-content: center;
+    }
+
 }
