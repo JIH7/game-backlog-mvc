@@ -11,11 +11,11 @@ module.exports = {
     },
 
     getRandomGamePage: async (req,res)=>{
-        const count = await gameDB.countDocuments({ userId: req.user.id })
+        const count = await gameDB.countDocuments({ userId: req.user.id, completed: false })
 
         const randomIndex = Math.floor(Math.random() * count)
 
-        const randomGame = await gameDB.findOne({ userId: req.user.id}).skip(randomIndex)
+        const randomGame = await gameDB.findOne({ userId: req.user.id, completed: false}).skip(randomIndex)
 
         const gameDataArray = await hltbController.searchGame(randomGame.gameName)
         const gameDataHolder = gameDataArray[0]
