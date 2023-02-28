@@ -34,6 +34,22 @@ module.exports = {
         }
     },
 
+    updateGame: async (req,res)=>{
+        try{
+            const game = await gameDB.findOne({gameName: req.body.gameFromJS, userId: req.user.id})
+            console.log(game.gameName + " " + game.completed)
+            if(game.completed){
+                await gameDB.updateOne({gameName: game.gameName, userId: req.user.id}, {completed: false})
+            }
+            else{
+                await gameDB.updateOne({gameName: game.gameName, userId: req.user.id}, {completed: true})
+            }
+            res.json('Game updated')
+        }catch(err){
+            console.log(err)
+        }
+    },
+
     deleteGame: async (req,res)=>{
         gameDB.deleteOne({gameName: req.body.gameFromJS, userId: req.user.id})
         .then(result =>{

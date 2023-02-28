@@ -46,10 +46,11 @@
                 <select name="gameList" id="">
                     <option value="placeHolder">Select a game to view</option>
                     <% for(let i = 0; i < items.length; i++) {%>
-                        <option value="<%= items[i].gameName %>"><%= items[i].gameName %></option>
+                        <option value="<%= items[i].gameName %>" class="<% if(items[i].completed){ %>complete<% }else{ %>incomplete<% } %>"><%= items[i].gameName %></option>
                     <% } %>    
                 </select>
                 <button id="viewGame">View Game</button>
+                <button id="toggleCompleted">Toggle Completed</button>
                 <button id="deleteGame">Delete Game</button>
             </section>
         </section>
@@ -57,12 +58,18 @@
             <h2>Some fun facts...</h2>
             <p>Your entire game backlog would take</p>
             <% 
-            let totalMain = 0, totalMainExtra = 0, totalCompletionist = 0;
+            let totalMain = 0, totalMainExtra = 0, totalCompletionist = 0
+            let totalMainExtraCompleted = 0
 
             for(let i = 0; i < items.length; i++){
-                totalMain += items[i].ttbMain
-                totalMainExtra += items[i].ttbMainExtra
-                totalCompletionist += items[i].ttbCompletionist
+                if(!items[i].completed){
+                    totalMain += items[i].ttbMain
+                    totalMainExtra += items[i].ttbMainExtra
+                    totalCompletionist += items[i].ttbCompletionist
+                }
+                else{
+                    totalMainExtraCompleted += items[i].ttbMainExtra
+                }
             }
 
             function daysFormat(time){
@@ -111,6 +118,9 @@
                 <p>That's over two weeks!</p>
             <% }else{ %>
                 <p>Better get started!</p>
+            <% } %>
+            <% if(totalMainExtraCompleted > 0){ %>
+                <p>You've completed roughly <%= daysFormat(totalMainExtraCompleted) %></p>
             <% } %>
         </section>
         <% }else{ %>

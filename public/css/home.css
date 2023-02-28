@@ -34,7 +34,9 @@ main{
 
 .gameList{
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
+    justify-content: center;
 }
 
 .gameList > *{
@@ -82,10 +84,23 @@ img{
     align-items: center;
 }
 
+.complete{
+    color: greenyellow;
+}
+
+select{
+    max-width: 40%;
+}
+
 @media screen and (max-width: 600px){
 
     button{
         font-size: 10px;
+    }
+    
+    select{
+        max-width: 100%;
+        width: 95%;
     }
 
     .homeMain{flex-direction: column;}
@@ -106,6 +121,6 @@ img{
     }
 
     .homeMain > section:has(+ section), .homeMain > section + section{
-        height: 325px;
+        height: 375px;
     }
 }
