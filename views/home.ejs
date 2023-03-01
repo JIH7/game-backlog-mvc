@@ -22,8 +22,16 @@
     </nav>
 
     <h1>What game should I play?</h1>
+    <% let incompleteGames = 0
+    for(let i = 0; i < items.length; i++){
+        if(items[i].completed === false){
+            incompleteGames++
+        }
+    }
+     %>
 
-    <% if(items.length > 0){ %>
+
+    <% if(incompleteGames > 0){ %>
         <a href="game/random" class="randomButton">Give Me a Random Game!</a>
     <% } %>
 
