@@ -98,6 +98,7 @@
             }
 
              %>
+            <% if(incompleteGames > 0) { %>
             <p>Your entire <% if(totalMainExtraCompleted > 0){ %>remaining <% } %>game backlog would take</p>
             <p><%= daysFormat(totalMain) %> if you were to rush through the main game, </p>
             <p><%= daysFormat(totalMainExtra) %> if you took your time to do some side content, </p>
@@ -127,7 +128,8 @@
                 <p>That's over two weeks!</p>
             <% }else{ %>
                 <p>Better get started!</p>
-            <% } %>
+            <% }} %>
+
             <% if(totalMainExtraCompleted > 0){ %>
                 <p>You've completed roughly <%= daysFormat(totalMainExtraCompleted) %> of game!<% if(totalMainExtraCompleted > 336) { %> Wow!<% } %></p>
             <% } %>
