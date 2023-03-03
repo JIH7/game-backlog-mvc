@@ -57,4 +57,17 @@ module.exports = {
         })
         .catch(err => console.log(err))
     },
+
+    fetchNames: async (req,res)=>{
+        const games = await hltbController.searchGame(req.query.game)
+        console.log(games)
+
+        let names = []
+
+        for(let i = 0; i < games.length && i < 5; i++){
+            names.push(games[i].name)
+        }
+
+        res.json(names)
+    }
 }

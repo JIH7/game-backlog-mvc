@@ -41,7 +41,7 @@
                 <p>Add a game:</p>
                 <form action="/home/searchGame" method="POST">
                     <div>
-                        <input type="text" placeholder="New Game" name = "gameName" class="textInput">
+                        <input type="text" placeholder="New Game" autocomplete="off" onchange="populateList()" name = "gameName" class="textInput" id="searchBar">
                         <input type="submit" value="Search Game">
                     </div>
                 </form>
@@ -141,7 +141,7 @@
         
     </main>
 
-    <div class="credits"><span>App by <a href="jeremyhelsel.com">Jeremy Helsel</a></span></div>
+    <div class="credits"><span>App by <a href="https://jeremyhelsel.com/">Jeremy Helsel</a></span></div>
 
     <script src="js/homePage.js"></script>
 </body>

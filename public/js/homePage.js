@@ -3,7 +3,9 @@ document.querySelector('#toggleCompleted').addEventListener('click', toggleCompl
 document.querySelector('#deleteGame').addEventListener('click', deleteGame)
 
 const gameSelect = document.querySelector('select')
+const searchBar = document.querySelector('#searchBar')
 
+let autoCompleteInfo = []
 
 async function viewGame(){
     console.log('view game')
@@ -69,4 +71,11 @@ async function deleteGame(){
             console.log(err)
         }
     }
+}
+
+async function populateList(){
+    const data = await fetch('/home/getAutocompleteList?game=' + searchBar.value)
+    list = await data.json()
+    console.log(list)
+    autoCompleteInfo = list
 }
