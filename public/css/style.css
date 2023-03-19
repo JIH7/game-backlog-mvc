@@ -3,6 +3,10 @@
     list-style: none;
 }
 
+.hidden{
+    display: none;
+}
+
 .flexContainer{
     display: flex;
 }

@@ -41,7 +41,9 @@
                 <p>Add a game:</p>
                 <form action="/home/searchGame" method="POST">
                     <div>
-                        <input type="text" placeholder="New Game" autocomplete="off" onchange="populateList()" name = "gameName" class="textInput" id="searchBar">
+                        <input type="text" placeholder="New Game" list="typeAhead" onInput="populateList()" autocomplete="off" name = "gameName" class="textInput" id="searchBar">
+                        <datalist id="typeAhead">
+                        </datalist>
                         <input type="submit" value="Search Game">
                     </div>
                 </form>

@@ -4,6 +4,7 @@ document.querySelector('#deleteGame').addEventListener('click', deleteGame)
 
 const gameSelect = document.querySelector('select')
 const searchBar = document.querySelector('#searchBar')
+const typeAhead = document.querySelector('#typeAhead')
 
 let autoCompleteInfo = []
 
@@ -75,7 +76,8 @@ async function deleteGame(){
 
 async function populateList(){
     const data = await fetch('/home/getAutocompleteList?game=' + searchBar.value)
-    list = await data.json()
-    console.log(list)
+    list = await data.text()
     autoCompleteInfo = list
+
+    typeAhead.innerHTML = list
 }

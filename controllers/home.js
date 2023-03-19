@@ -68,6 +68,6 @@ module.exports = {
             names.push(games[i].name)
         }
 
-        res.json(names)
+        res.render('typeAhead.ejs', {items: names})
     }
 }
