@@ -8,6 +8,9 @@ const typeAhead = document.querySelector('#typeAhead')
 
 let autoCompleteInfo = []
 
+let keyStrokes = 0
+const maxKeystrokes = 3
+
 async function viewGame(){
     console.log('view game')
     console.log(gameSelect.value)
@@ -71,6 +74,15 @@ async function deleteGame(){
         }catch(err){
             console.log(err)
         }
+    }
+}
+
+function incrementKeystrokes(){
+    keyStrokes++
+    
+    if(keyStrokes >= maxKeystrokes){
+        keyStrokes = 0
+        populateList()
     }
 }
 
