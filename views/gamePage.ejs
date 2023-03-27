@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/home.css">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,28 +15,30 @@
 
     <title>You should play <%= gameData.name %></title>
 </head>
-<body>
-    <nav class="flexContainer logOutPrompt">
-        <p>Logged in as <%= user.userName %></p>
-        <a href="/logout">Log out</a>
-    </nav>
+<body class="blue-grey darken-3">
+    <div class="right-align">
+        <nav class="blue-grey darken-3">
+            <span>Logged in as <%= user.userName %></span>
+            <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>
+        </nav>
+    </div>
 
-    <main class="flexContainer column gamePage">
-        <h2>You should play...</h2>
-        <h1><%= gameData.name %></h1>
+    <main class="container center">
+        <h2 class="white-text">You should play...</h2>
+        <h1 class="white-text"><%= gameData.name %></h1>
         <img src="<%= gameData.imageUrl %> " alt="">
 
         <section>
-            <h3>Beating this game takes</h3>
-            <h4>Main: <%= gameData.gameplayMain %> hours</h4>
-            <h4>Main + Extras: <%= gameData.gameplayMainExtra %> hours</h4>
-            <h4>Completionist: <%= gameData.gameplayCompletionist %> hours</h4>
+            <h3 class="white-text">Beating this game takes</h3>
+            <h4 class="white-text">Main: <%= gameData.gameplayMain %> hours</h4>
+            <h4 class="white-text">Main + Extras: <%= gameData.gameplayMainExtra %> hours</h4>
+            <h4 class="white-text">Completionist: <%= gameData.gameplayCompletionist %> hours</h4>
 
-            <h3>Platforms: <% for(let i = 0; i < gameData.platforms.length; i++) { %>
+            <h3 class="white-text">Platforms: <% for(let i = 0; i < gameData.platforms.length; i++) { %>
                 <% if(i < gameData.platforms.length - 1) {%>
-                    <span><%= gameData.platforms[i] %>, </span>
+                    <span class="white-text"><%= gameData.platforms[i] %>, </span>
                 <% }else{ %>
-                    <span><%= gameData.platforms[i] %></span>
+                    <span class="white-text"><%= gameData.platforms[i] %></span>
             <% }} %></h3> 
 
         </section>
@@ -43,9 +46,10 @@
         
 
 
-        <a href="/home" class="centerButton">Back to the list!</a>
+        <a href="/home" class="btn-large blue-grey darken-1 center waves-effect">Back to the list!</a>
     </main>
 
     <div class="credits"><span>App by <a href="https://jeremyhelsel.com/">Jeremy Helsel</a></span></div>
+    <script src="/js/materialize.min.js"></script>
 </body>
 </html>

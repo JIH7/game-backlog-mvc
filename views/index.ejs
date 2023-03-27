@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,26 +15,29 @@
     
     <title>What game should I play?</title>
 </head>
-<body>
+<body class="blue-grey darken-3">
     <% if(user){ %>
-        <div class="flexContainer column">
-            <nav class="flexContainer logOutPrompt">
-                <p>Logged in as <%= user.userName %></p>
-                <a href="/logout">Log out</a>
+        <div class="right-align">
+            <nav class="blue-grey darken-3">
+                <span>Logged in as <%= user.userName %></span>
+                <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>
             </nav>
         </div>
     <% } %>
-    <section class="flexContainer mainSection">
-        <h1>Game Backlog Tracker</h1>
-        <p>An app by <span class="credits"><a href="https://jeremyhelsel.com/">Jeremy Helsel</a></span> for tracking the games you've been meaning to play and helping you work your way through them.</p>
-        <div class="flexContainer">
+    <div style="height: 200px;"></div>
+    <section class="container blue-grey darken-3">
+        <h1 class="center white-text">Game Backlog Tracker</h1>
+        <p class="center white-text">An app by <span class="blue-text lighten-4"><a href="https://jeremyhelsel.com/">Jeremy Helsel</a></span> for tracking the games you've been meaning to play and helping you work your way through them.</p>
+        <div class="container center">
             <% if(!user){ %>
-                <a href="/login"><span>Login</span></a>
-                <a href="/signup"><span>Signup</span></a>
+                <a href="/login" class="btn-large blue-grey darken-1 center waves-effect"><span>Login</span></a>
+                <a href="/signup" class="btn-large blue-grey darken-1 center waves-effect"><span>Signup</span></a>
             <% }else{ %>
-                <a href="/home">Take me to my list!</a>
+                <a href="/home" class="btn-large blue-grey darken-1 center waves-effect">Take me to my list!</a>
             <% } %>
         </div>
     </section>
+
+    <script src="/js/materialize.min.js"></script>
 </body>
 </html>

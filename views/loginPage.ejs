@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/authpage.css">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,32 +15,48 @@
     
     <title>Game Backlog: Login</title>
 </head>
-<body>
+<body class="blue-grey darken-3 container">
+
+    <div style="height: 90px;"></div>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
+            <div class="alert alert-danger red-text"><%= el.msg %></div>
         <% }) %>    
     <% } %>
     <% if (locals.messages.info) { %>
         <% messages.info.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
+            <div class="alert alert-danger red-text"><%= el.msg %></div>
         <% }) %>    
     <% } %>
 
     <form action="/login" method="post">
-        <div>
-            <label for="email">Email:</label>
-            <input type="text" name="email" id="email">
+        <div class="container">
+            <div>
+                <label for="email" class="left-align">Email:</label>
+                <input type="text" name="email" id="email" class="white-text">
+            </div>
+            <div>
+                <label for="password" class="left-align">Password:</label>
+                <input type="password" name="password" id="password" class="white-text">
+            </div>
+        
+            <div style="height: 30px;"></div>
+
+            <div class="container center">
+                <button class="btn-large blue-grey darken-1 center waves-effect" type="submit" name="action">Login
+                    <i class="material-icons right">send</i>
+                </button>
+
+                <div style="height: 40px;"></div>
+
+                <div class="otherpages">
+                    <a href="/signup" class="btn-large blue-grey darken-1 center-align waves-effect">Sign Up</a>
+                    <a href="/" class="btn-large blue-grey darken-1 center waves-effect">Back</a>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password">
-        </div>
-        <input type="submit" class="submit" value="Log in">
-        <Div class="otherpages">
-            <a href="/signup">Sign Up</a>
-            <a href="/">Back</a>
-        </Div>
     </form>
+
+    <script src="/js/materialize.min.js"></script>
 </body>
 </html>

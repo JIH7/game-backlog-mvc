@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,136 +16,151 @@
 
     <title>What game should I play?</title>
 </head>
-<body>
-    <nav class="flexContainer logOutPrompt">
-        <p>Logged in as <%= user.userName %></p>
-        <a href="/logout">Log out</a>
-    </nav>
+<body class="blue-grey darken-3">
+    <div class="right-align">
+        <nav class="blue-grey darken-3">
+            <span>Logged in as <%= user.userName %></span>
+            <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>
+        </nav>
+    </div>
 
-    <h1>What game should I play?</h1>
-    <% let incompleteGames = 0
-    for(let i = 0; i < items.length; i++){
-        if(items[i].completed === false){
-            incompleteGames++
+    <div class="container">
+        <h1 class="white-text center-align">What game should I play?</h1>
+        <% let incompleteGames = 0
+        for(let i = 0; i < items.length; i++){
+            if(items[i].completed === false){
+                incompleteGames++
+            }
         }
-    }
-     %>
+        %>
 
 
-    <% if(incompleteGames > 0){ %>
-        <a href="game/random" class="randomButton">Give Me a Random Game!</a>
-    <% } %>
-
-    <main class="homeMain">
-        <section class="flexContainer column">
-            <section class="flexContainer column">
-                <p>Add a game:</p>
-                <form action="/home/searchGame" method="POST">
-                    <div>
-                        <input type="text" placeholder="New Game" list="typeAhead" onInput="incrementKeystrokes()" onchange="populateList()" autocomplete="off" name = "gameName" class="textInput" id="searchBar">
-                        <datalist id="typeAhead">
-                        </datalist>
-                        <input type="submit" value="Search Game">
-                    </div>
-                </form>
-            </section>
-
-            <% if(items.length > 0) { %>
-            <p>Or manage your list:</p>
-            
-            <section class="gameList">
-                <select name="gameList" id="">
-                    <option value="placeHolder">Select a game to view</option>
-                    <% for(let i = 0; i < items.length; i++) {%>
-                        <option value="<%= items[i].gameName %>" class="<% if(items[i].completed){ %>complete<% }else{ %>incomplete<% } %>"><% if(items[i].completed){ %><%= '✓ ' %><% } %><%= items[i].gameName %></option>
-                    <% } %>    
-                </select>
-                <button id="viewGame">View Game</button>
-                <button id="toggleCompleted">Toggle Completed</button>
-                <button id="deleteGame">Delete Game</button>
-            </section>
-        </section>
-        <section>
-            <h2>Some fun facts...</h2>
-            
-            <% 
-            let totalMain = 0, totalMainExtra = 0, totalCompletionist = 0
-            let totalMainExtraCompleted = 0
-
-            for(let i = 0; i < items.length; i++){
-                if(!items[i].completed){
-                    totalMain += items[i].ttbMain
-                    totalMainExtra += items[i].ttbMainExtra
-                    totalCompletionist += items[i].ttbCompletionist
-                }
-                else{
-                    totalMainExtraCompleted += items[i].ttbMainExtra
-                }
-            }
-
-            function daysFormat(time){
-                if(time <= 24){
-                    return `${time} hours`
-                }
-
-                const remainder = time % 24
-                let timeForDays = time - remainder
-                timeForDays /= 24
-
-                if(remainder !== 0){
-                    return `${timeForDays} days and ${remainder} hours`
-                }
-                else{
-                    return `${timeForDays} days`
-                }
-            }
-
-             %>
-            <% if(incompleteGames > 0) { %>
-            <p>Your entire <% if(totalMainExtraCompleted > 0){ %>remaining <% } %>game backlog would take</p>
-            <p><%= daysFormat(totalMain) %> if you were to rush through the main game, </p>
-            <p><%= daysFormat(totalMainExtra) %> if you took your time to do some side content, </p>
-            <p>and<% if(totalCompletionist >= 336){ %> a whopping<% } %> <%= daysFormat(totalCompletionist) %> if you did every single side activity!</p>
-            
-            <% if(totalCompletionist >= 122640){ %>
-                <p>That's Longer than Duke Nukem Forever spent in development!!!</p>
-            <% }else if(totalCompletionist >= 52560){ %>
-                <p>That's longer than it took to build the Burj Khalifa!</p>
-            <% }else if(totalCompletionist >= 9840){ %>
-                <p>That's longer than it took to build the empire state building!</p>
-            <% }else if(totalCompletionist >= 8760){ %>
-                <p>That's an entire year!</p>
-            <% }else if(totalCompletionist >= 6481){ %>
-                <p>That's longer than an entire human pregnancy!</p>
-            <% }else if(totalCompletionist >= 4368){ %>
-                <p>That's over half a year!</p>
-            <% }else if(totalCompletionist >= 2256){ %>
-                <p>That's longer than an entire winter!</p>
-            <% }else if(totalCompletionist >= 1680){ %>
-                <p>That's longer than the first voyage to the new world!</p>
-            <% }else if(totalCompletionist >= 1440){ %>
-                <p>That's longer than the lifespan of a housefly!</p>
-            <% }else if(totalCompletionist >= 720){ %>
-                <p>That's over a month of straight gameplay!</p>
-            <% }else if(totalCompletionist >= 336){ %>
-                <p>That's over two weeks!</p>
-            <% }else{ %>
-                <p>Better get started!</p>
-            <% }} %>
-
-            <% if(totalMainExtraCompleted > 0){ %>
-                <p>You've completed roughly <%= daysFormat(totalMainExtraCompleted) %> of game!<% if(totalMainExtraCompleted > 336) { %> Wow!<% } %></p>
-            <% } %>
-        </section>
-        <% }else{ %>
-            <h2>Search a game to build out your list!</h2>
+        <% if(incompleteGames > 0){ %>
+            <div class="container center">
+                <a href="game/random" class="randomButton btn-large blue-grey darken-1 center waves-effect">Give Me a Random Game!</a>
+            </div>
         <% } %>
+        
+        <div style="height: 20px;"></div>
+
+        <main class="row">
+            <section class="col s12 m6">
+                <section>
+                    <p class="white-text">Add a game:</p>
+                    <form action="/home/searchGame" method="POST">
+                        <div>
+                            <label for="searchBar">Search:</label>
+                            <input type="text" list="typeAhead" onInput="incrementKeystrokes()" onchange="populateList()" autocomplete="off" name = "gameName" class="textInput white-text autocomplete" id="searchBar">
+                            <datalist id="typeAhead">
+                            </datalist>
+                            <button class="btn blue-grey darken-1 center waves-effect" type="submit" name="action">Search Game</button>
+                        </div>
+                    </form>
+                </section>
+
+                <% if(items.length > 0) { %>
+                <p class="white-text">Or manage your list:</p>
+                
+                <section class="gameList">
+                    <select name="gameList" class="browser-default blue-grey darken-1 white-text">
+                        <option value="placeHolder">Select a game to view</option>
+                        <% for(let i = 0; i < items.length; i++) {%>
+                            <option value="<%= items[i].gameName %>" class="<% if(items[i].completed){ %>complete<% }else{ %>incomplete<% } %>"><% if(items[i].completed){ %><%= '✓ ' %><% } %><%= items[i].gameName %></option>
+                        <% } %>    
+                    </select>
+                    <div style="height: 10px;"></div>
+                    <div class="row center">
+                        <button id="viewGame" class="btn blue-grey darken-1 center waves-effect s3">View Game</button>
+                        <button id="toggleCompleted" class="btn blue-grey darken-1 center waves-effect s3">Toggle Completed</button>
+                        <div class="show-on-small" style="height: 7px;"></div>
+                        <button id="deleteGame" class="btn blue-grey darken-1 center waves-effect s3">Delete Game</button>
+                    </div>
+                </section>
+            </section>
+            <section class="col s12 m6">
+                <h2 class="white-text">Some fun facts...</h2>
+                
+                <% 
+                let totalMain = 0, totalMainExtra = 0, totalCompletionist = 0
+                let totalMainExtraCompleted = 0
+
+                for(let i = 0; i < items.length; i++){
+                    if(!items[i].completed){
+                        totalMain += items[i].ttbMain
+                        totalMainExtra += items[i].ttbMainExtra
+                        totalCompletionist += items[i].ttbCompletionist
+                    }
+                    else{
+                        totalMainExtraCompleted += items[i].ttbMainExtra
+                    }
+                }
+
+                function daysFormat(time){
+                    if(time <= 24){
+                        return `${time} hours`
+                    }
+
+                    const remainder = time % 24
+                    let timeForDays = time - remainder
+                    timeForDays /= 24
+
+                    if(remainder !== 0){
+                        return `${timeForDays} days and ${remainder} hours`
+                    }
+                    else{
+                        return `${timeForDays} days`
+                    }
+                }
+
+                %>
+                <% if(incompleteGames > 0) { %>
+                <p class="white-text">Your entire <% if(totalMainExtraCompleted > 0){ %>remaining <% } %>game backlog would take</p>
+                <p class="white-text"><%= daysFormat(totalMain) %> if you were to rush through the main game, </p>
+                <p class="white-text"><%= daysFormat(totalMainExtra) %> if you took your time to do some side content, </p>
+                <p class="white-text">and<% if(totalCompletionist >= 336){ %> a whopping<% } %> <%= daysFormat(totalCompletionist) %> if you did every single side activity!</p>
+                
+                <% if(totalCompletionist >= 122640){ %>
+                    <p class="white-text">That's Longer than Duke Nukem Forever spent in development!!!</p>
+                <% }else if(totalCompletionist >= 52560){ %>
+                    <p class="white-text">That's longer than it took to build the Burj Khalifa!</p>
+                <% }else if(totalCompletionist >= 9840){ %>
+                    <p class="white-text">That's longer than it took to build the empire state building!</p>
+                <% }else if(totalCompletionist >= 8760){ %>
+                    <p class="white-text">That's an entire year!</p>
+                <% }else if(totalCompletionist >= 6481){ %>
+                    <p class="white-text">That's longer than an entire human pregnancy!</p>
+                <% }else if(totalCompletionist >= 4368){ %>
+                    <p class="white-text">That's over half a year!</p>
+                <% }else if(totalCompletionist >= 2256){ %>
+                    <p class="white-text">That's longer than an entire winter!</p>
+                <% }else if(totalCompletionist >= 1680){ %>
+                    <p class="white-text">That's longer than the first voyage to the new world!</p>
+                <% }else if(totalCompletionist >= 1440){ %>
+                    <p class="white-text">That's longer than the lifespan of a housefly!</p>
+                <% }else if(totalCompletionist >= 720){ %>
+                    <p class="white-text">That's over a month of straight gameplay!</p>
+                <% }else if(totalCompletionist >= 336){ %>
+                    <p class="white-text">That's over two weeks!</p>
+                <% }else{ %>
+                    <p class="white-text">Better get started!</p>
+                <% }} %>
+
+                <% if(totalMainExtraCompleted > 0){ %>
+                    <p class="white-text">You've completed roughly <%= daysFormat(totalMainExtraCompleted) %> of game!<% if(totalMainExtraCompleted > 336) { %> Wow!<% } %></p>
+                <% } %>
+            </section>
+            <% }else{ %>
+                <h2 class="white-text">Search a game to build out your list!</h2>
+            <% } %>
+
+            
+        </main>
 
         
-    </main>
-
-    <div class="credits"><span>App by <a href="https://jeremyhelsel.com/">Jeremy Helsel</a></span></div>
+    </div>
+    <div class="credits container center"><span class="white-text">App by <a href="https://jeremyhelsel.com/">Jeremy Helsel</a></span></div>
 
     <script src="js/homePage.js"></script>
+    <script src="/js/materialize.min.js"></script>
 </body>
 </html>

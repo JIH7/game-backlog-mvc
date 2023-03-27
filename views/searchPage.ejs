@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/searchPage.css">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,27 +16,31 @@
 
     <title>Search Results</title>
 </head>
-<body>
-    <body>
-        <nav class="flexContainer logOutPrompt">
-            <p>Logged in as <%= user.userName %></p>
-            <a href="/logout">Log out</a>
+<body class="blue-grey darken-3">
+    <div class="right-align">
+        <nav class="blue-grey darken-3">
+            <span>Logged in as <%= user.userName %></span>
+            <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>    
         </nav>
-
-        <main class="flexContainer column">
-            <% for(let i = 0; i < items.length; i++){ %>
-                <div class="gameTile flexContainer" data-gameName="<%= items[i].name %>" data-gameId="<%= items[i].id %>">
-                    <img src="<%= items[i].imageUrl %>" alt="<%= items[i].name %> image">
-                    <span><%= items[i].name %></span>
-                    <form action="/home/addGame" method="POST">
-                        <input type="text" name="gameName" value="<%= items[i].name %>">
-                        <input type="text" name="gameId" value="<%= items[i].id %>">
-                        <input type="submit" value="Add Game">
-                    </form>
+    </div>
+    <main class="container row">
+        <% for(let i = 0; i < items.length; i++){ %>
+            <div class="row left col s12" style="height: 70px;" data-gameName="<%= items[i].name %>" data-gameId="<%= items[i].id %>">
+                <div class="col s4 m3">
+                    <img src="<%= items[i].imageUrl %>" alt="<%= items[i].name %> image" style="max-width: 100%; max-height: 70px;">
                 </div>
-            <% } %>
-            <a href="/home">Back to the list!</a>
-        </main>
-    </body>
+                <span class="white-text"><%= items[i].name %></span>
+                <form action="/home/addGame" method="POST">
+                    <input type="text" name="gameName" class="hide" value="<%= items[i].name %>">
+                    <input type="text" name="gameId" class="hide" value="<%= items[i].id %>">
+                    <button class="btn blue-grey darken-1 center waves-effect right" type="submit" name="action">Add Game</button>
+                </form>
+            </div>
+            <div style="height: 3px;"></div>
+        <% } %>
+        <div class="container center">
+            <a href="/home" class="btn-large blue-grey darken-1 center waves-effect">Back to the list!</a>
+        </div>
+    </main>
 </body>
 </html>
