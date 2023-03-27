@@ -8,6 +8,8 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/searchPage.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +27,7 @@
     </div>
     <main class="container row">
         <% for(let i = 0; i < items.length; i++){ %>
-            <div class="row left col s12" style="height: 70px;" data-gameName="<%= items[i].name %>" data-gameId="<%= items[i].id %>">
+            <div class="row left col s12 hoverable" style="height: 70px;" data-gameName="<%= items[i].name %>" data-gameId="<%= items[i].id %>">
                 <div class="col s4 m3">
                     <img src="<%= items[i].imageUrl %>" alt="<%= items[i].name %> image" style="max-width: 100%; max-height: 70px;">
                 </div>
