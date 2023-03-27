@@ -19,10 +19,16 @@
     <title>Search Results</title>
 </head>
 <body class="blue-grey darken-3">
-    <div class="right-align">
-        <nav class="blue-grey darken-3">
-            <span>Logged in as <%= user.userName %></span>
-            <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>    
+    <div>
+        <nav class="blue-grey darken-3 valign-wrapper row">
+            <a href="/home" class="btn blue-grey darken-1 waves-effect left-align col s1">Home</a>
+
+            <div class="col s9"></div>
+
+            <div class="col s2">
+                <span>Logged in as <%= user.userName %></span>
+                <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>
+            </div>
         </nav>
     </div>
     <div style="height: 20px;"></div>
