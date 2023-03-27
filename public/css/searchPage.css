@@ -2,3 +2,14 @@
     display: flex;
     align-items: center;
 }
+
+.desktop-btn{
+    position: relative;
+    bottom: 35px;
+}
+
+.desktop-text{
+    position: relative;
+    right: 12%;
+    top: 5px
+}
