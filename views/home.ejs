@@ -8,6 +8,9 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +22,13 @@
 <body class="blue-grey darken-3">
     <div class="right-align">
         <nav class="blue-grey darken-3">
-            <span>Logged in as <%= user.userName %></span>
-            <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>
+            <div></div>
+
+
+            <div class="logged-in">
+                <span>Logged in as <%= user.userName %></span>
+                <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>
+            </div>
         </nav>
     </div>
 

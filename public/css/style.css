@@ -1,4 +1,19 @@
-.home-btn{
+.home-btn {
     position: relative !important;
     left: 10px !important;
+}
+
+.logged-in {
+    display: flex;
+    align-items: center;
+}
+
+.logged-in > a {
+    margin: 0px 10px;
+}
+
+nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
 }

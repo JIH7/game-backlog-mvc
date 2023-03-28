@@ -21,13 +21,13 @@
 </head>
 <body class="blue-grey darken-3">
     <div>
-        <nav class="blue-grey darken-3 valign-wrapper row">
-            <a href="/home" class="btn blue-grey darken-1 waves-effect left-align col s2 m1 home-btn">Home</a>
+        <nav class="blue-grey darken-3 valign-wrapper">
+            <a href="/home" class="btn blue-grey darken-1 waves-effect left-align home-btn">Home</a>
 
-            <div class="col s1 m9"></div>
+            <div></div>
 
-            <div class="col s9 m2">
-                <span>Logged in as <%= user.userName %></span>
+            <div class="logged-in">
+                <span class="truncate">Logged in as <%= user.userName %></span>
                 <a href="/logout" class="btn blue-grey darken-1 waves-effect">Log out</a>
             </div>
         </nav>

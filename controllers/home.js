@@ -23,6 +23,7 @@ module.exports = {
                 ttbMain: newGame.gameplayMain,
                 ttbMainExtra: newGame.gameplayMainExtra,
                 ttbCompletionist: newGame.gameplayCompletionist,
+                imgUrl: newGame.imageUrl,
                 userId: req.user.id,
                 completed: false,
             })
