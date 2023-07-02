@@ -1,3 +1,4 @@
+# Game Backlog Tracker
 This is my very first full stack web application. Currently, the live version isn't functional as an API I was utilizing has been abandoned, but I intend to switch APIs and refactor soon and the rest of the code is still functional. Users can create an account then compile a list of videos games they would like to play using data from HowLongToBeat.com. The app tracks the total playtime for the entire list and can suggest random games from the user's list.
 
 To run your own instance, add a .env file to the config folder with a DB_CONNECTION_STRING value to connect to a MongoDB shard.
